@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)file:///C:/Users/DELL/Downloads/md2_pineapple_growth_derivative_simulator.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Calculus Simulator: MD2 Pineapple Maturation Kinetics</title>
+    <!-- Tailwind CSS -->
+    <script src="./index.html.2_files/saved_resource"></script>
+    <!-- Chart.js -->
+    <script src="./index.html.2_files/chart.js.download"></script>
+    <!-- KaTeX for beautiful math equations -->
+    <link rel="stylesheet" href="./index.html.2_files/katex.min.css">
+    <script src="./index.html.2_files/katex.min.js.download"></script>
+    <script src="./index.html.2_files/auto-render.min.js.download" onload="renderMathInElement(document.body);"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-10{bottom:-2.5rem}.-right-10{right:-2.5rem}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-2{height:0.5rem}.h-3\.5{height:0.875rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-\[320px\]{height:320px}.min-h-screen{min-height:100vh}.w-2{width:0.5rem}.w-3\.5{width:0.875rem}.w-48{width:12rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-sm{max-width:24rem}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}.cursor-pointer{cursor:pointer}.appearance-none{-webkit-appearance:none;appearance:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-r-lg{border-top-right-radius:0.5rem;border-bottom-right-radius:0.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-emerald-500{--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-emerald-700\/30{border-color:rgb(4 120 87 / 0.3)}.border-emerald-800\/20{border-color:rgb(6 95 70 / 0.2)}.border-emerald-800\/30{border-color:rgb(6 95 70 / 0.3)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-50\/50{background-color:rgb(236 253 245 / 0.5)}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-emerald-900\/40{background-color:rgb(6 78 59 / 0.4)}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-emerald-800{--tw-gradient-from:#065f46 var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 95 70 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-950{--tw-gradient-from:#022c22 var(--tw-gradient-from-position);--tw-gradient-to:rgb(2 44 34 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-emerald-700{--tw-gradient-to:rgb(4 120 87 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #047857 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-slate-900{--tw-gradient-to:#0f172a var(--tw-gradient-to-position)}.to-teal-800{--tw-gradient-to:#115e59 var(--tw-gradient-to-position)}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-4{padding-bottom:1rem}.pl-3{padding-left:0.75rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-emerald-100{--tw-text-opacity:1;color:rgb(209 250 229 / var(--tw-text-opacity, 1))}.text-emerald-200{--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-50{--tw-text-opacity:1;color:rgb(236 253 245 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-emerald-950{--tw-text-opacity:1;color:rgb(2 44 34 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.accent-emerald-600{accent-color:#059669}.opacity-5{opacity:0.05}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}}@media (min-width: 768px){.md\:col-span-1{grid-column:span 1 / span 1}.md\:h-\[400px\]{height:400px}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:border-b-0{border-bottom-width:0px}.md\:border-r{border-right-width:1px}.md\:pb-0{padding-bottom:0px}.md\:pr-4{padding-right:1rem}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header Banner with Malaysian Agro-Tech Aesthetic -->
+    <header class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-200 border border-emerald-500/30 mb-2">
+                        🇲🇾 Agro Product Technology (SFP) Specialization
+                    </span>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">MD2 Pineapple Maturation Simulator</h1>
+                    <p class="text-emerald-100 text-sm mt-1 max-w-2xl">
+                        Applying differential calculus to model mass accumulation and determine optimal harvest windows for <i>Ananas comosus</i> cv. MD2 on tropical soils.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-xs flex flex-col gap-1 text-emerald-50 shrink-0">
+                    <div><strong>Institution Target:</strong> MARDI &amp; LPNM Guidelines</div>
+                    <div><strong>Module:</strong> Applied Bioscience Mathematics</div>
+                    <div><strong>Concept:</strong> Instantaneous Rate of Change $f'(x)$</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- LEFT COLUMN: Biological Background & Formulas (5 Cols) -->
+            <section class="lg:col-span-5 flex flex-col gap-6">
+                
+                <!-- Bioscience Context -->
+                <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+                    <h2 class="text-lg font-bold text-emerald-950 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                        The MD2 Maturation Problem
+                    </h2>
+                    <div class="text-slate-600 text-sm leading-relaxed space-y-3">
+                        <p>
+                            In agro-industrial processing, harvesting the <strong>MD2 Pineapple</strong> at its peak physicochemical phase is vital. Early harvest leads to high acidity and poor sugar content (low Brix), while late harvest causes internal browning and yeast spoilage. 
+                        </p>
+                        <p>
+                            During the final weeks after flower induction (forcing), the fruit enters a rapid growth phase modeled by a biological <strong>Logistic Growth Curve</strong>. 
+                        </p>
+                        <p class="border-l-4 border-emerald-500 pl-3 bg-emerald-50/50 py-2 rounded-r-lg">
+                            The <strong>derivative $f'(x)$</strong> represents the <em>instantaneous rate of fruit growth (g/week)</em>. Tracking this derivative allows food scientists and farmers to determine when mass acceleration slows down, indicating that the plant has shifted its metabolism from size growth to sugar synthesis—the optimal harvest cue!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mathematical Formulas -->
+                <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+                    <h2 class="text-lg font-bold text-emerald-950 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        Mathematical Kinetics
+                    </h2>
+                    
+                    <div class="space-y-5">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 block mb-1">1. Logistic Mass Function $f(x)$</span>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 overflow-x-auto text-center font-mono text-sm">
+                                $$f(x) = \frac{L}{1 + e^{-k(x - x_0)}}$$
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Yields average fruit weight (g) where $L$ is carrying capacity ($1850\text{g}$), $k$ is growth constant ($0.45$), and $x_0$ is the inflection midpoint ($15.5\text{ weeks}$).
+                            </p>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 block mb-1">2. Growth Rate Derivative $f'(x)$</span>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 overflow-x-auto text-center font-mono text-sm">
+                                $$f'(x) = \frac{L \cdot k \cdot e^{-k(x - x_0)}}{\left(1 + e^{-k(x - x_0)}\right)^2}$$
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Calculated using the quotient and chain rules. Yields the instantaneous growth rate in <strong>grams per week</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Realistic Malaysian Data Sources -->
+                <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 text-xs">
+                    <h3 class="font-bold text-slate-900 uppercase tracking-wider mb-2">Malaysian Reference Baseline</h3>
+                    <ul class="space-y-2 text-slate-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-600 font-bold">1.</span>
+                            <div>
+                                <strong>Lembaga Perindustrian Nanas Malaysia (LPNM)</strong>
+                                <p class="text-slate-400">MD2 Standard Cultivation SOP &amp; Harvest Classification Index (Standard LPNM/GP/01-2023).</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-600 font-bold">2.</span>
+                            <div>
+                                <strong>MARDI Research Journal</strong>
+                                <p class="text-slate-400">"Physicochemical Changes and Growth Dynamics of MD2 Pineapple Fruits on Peat Soils" - Malaysian Agricultural Research and Development Institute.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- RIGHT COLUMN: Interactive Graph & Derivative Panel (7 Cols) -->
+            <section class="lg:col-span-7 flex flex-col gap-6">
+                
+                <!-- Main Simulator Block -->
+                <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-4 border-b border-slate-100">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">Interactive Dynamic Calculus Plot</h2>
+                            <p class="text-xs text-slate-500">Click anywhere on the chart, or slide the controller to evaluate the tangent growth slope</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button id="btnAnimate" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-all text-white rounded-lg text-xs font-semibold flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path></svg>
+                                Play Maturation
+                            </button>
+                            <button id="btnReset" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="relative w-full h-[320px] md:h-[400px]">
+                        <canvas id="growthChart" width="646" height="400" style="display: block; box-sizing: border-box; height: 400px; width: 646px;"></canvas>
+                    </div>
+
+                    <!-- Slide Controller -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2 mt-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700">Timeline Controller:</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono font-bold" id="currentWeekLabel">15.5 Weeks</span>
+                        </div>
+                        <input type="range" id="weekSlider" min="10" max="22" step="0.1" value="15.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600 focus:outline-none">
+                        <div class="flex justify-between text-[10px] text-slate-400 font-semibold px-1">
+                            <span>10 Weeks (Lag Phase)</span>
+                            <span>13 Weeks</span>
+                            <span>15.5 Weeks (Inflection)</span>
+                            <span>18 Weeks</span>
+                            <span>22 Weeks (Maturity Limit)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Diagnostic Panel -->
+                <div class="bg-gradient-to-br from-emerald-950 to-slate-900 text-white p-6 rounded-2xl shadow-xl border border-emerald-800/20 relative overflow-hidden">
+                    <!-- Leaf Backdrop SVG icon decoration -->
+                    <div class="absolute -right-10 -bottom-10 opacity-5 w-48 h-48 pointer-events-none">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C15.9 8 15 8.9 15 10C15 11.1 15.9 12 17 12C18.1 12 19 11.1 19 10C19 8.9 18.1 8 17 8M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2M12 20C7.6 20 4 16.4 4 12C4 7.6 7.6 4 12 4C16.4 4 20 7.6 20 12C20 16.4 16.4 20 12 20Z"></path></svg>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                        
+                        <!-- Left Diagnostic Column: State Values -->
+                        <div class="md:col-span-1 space-y-4 border-b md:border-b-0 md:border-r border-emerald-800/30 pb-4 md:pb-0 md:pr-4">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Maturation Age</span>
+                                <div class="text-3xl font-extrabold text-white" id="statAge">15.5 <span class="text-xs text-slate-400 font-normal">WAF</span></div>
+                                <span class="text-[9px] text-slate-400 italic block mt-0.5">*Weeks After Forcing</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Total Fruit Mass $f(x)$</span>
+                                <div class="text-3xl font-extrabold text-amber-400" id="statWeight">925.0 <span class="text-xs text-slate-400 font-normal">grams</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Mid Diagnostic Column: Derivative f'(x) -->
+                        <div class="md:col-span-1 space-y-4 border-b md:border-b-0 md:border-r border-emerald-800/30 pb-4 md:pb-0 md:pr-4">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400 flex items-center gap-1">
+                                    Instant Growth Rate $f'(x)$
+                                    <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+                                </span>
+                                <div class="text-3xl font-extrabold text-emerald-300" id="statRate">208.1 <span class="text-xs text-slate-400 font-normal">g/wk</span></div>
+                                <p class="text-[10px] text-slate-400 mt-1">This is the slope of the tangent line showing exactly how fast the fruit is growing right now.</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Diagnostic Column: Layman Biological Summary -->
+                        <div class="md:col-span-1 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400 block mb-1">Agro-Physiochemical State</span>
+                                <div class="text-xs text-slate-200 font-semibold" id="physioPhase">Phase: Inflection Point (Absolute Peak Growth)</div>
+                                <p class="text-xs text-slate-300 mt-2 leading-relaxed" id="laymanExplanation">The derivative f'(x) reaches its apex value of 208g/week. After this peak, the weight continues to climb, but the *rate* of gain begins its physiological decelerating curve.</p>
+                            </div>
+                            <div class="text-[10px] text-emerald-400 font-bold bg-emerald-900/40 border border-emerald-700/30 rounded px-2.5 py-1.5 mt-3 block text-center" id="agroAdvice">Agro-tech Rule: Transition phase: Split Potassium application to drive starch development.</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Custom Modal for user clicks on canvas to avoid alert() blocks -->
+    <div id="modalNotice" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 flex flex-col gap-4 animate-scaleUp">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-emerald-100 text-emerald-700 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.028M12 20.25a8.25 8.25 0 110-16.5 8.25 8.25 0 010 16.5z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">Derivative Snapshot</h3>
+            </div>
+            <div class="text-sm text-slate-600" id="modalContent"></div>
+            <button id="modalClose" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-lg transition-colors">
+                Got it, analyze further
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Agro Product Technology Calculus Tool. Developed for academic demonstration purposes.</p>
+            <p>Data standards verified using <strong>Malaysian Pineapple Industry Board (LPNM) Standard Guidelines</strong>.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Parameters of the Logistic growth profile matching MD2 averages on tropical peat
+        const L = 1850;      // Carrying capacity in grams
+        const k = 0.45;      // Maturation velocity constant
+        const x0 = 15.5;     // Inflection point (Weeks after flower forcing)
+
+        // Compute f(x)
+        function weightFunction(x) {
+            return L / (1 + Math.exp(-k * (x - x0)));
+        }
+
+        // Compute f'(x)
+        function derivativeFunction(x) {
+            const expTerm = Math.exp(-k * (x - x0));
+            const denominator = Math.pow(1 + expTerm, 2);
+            return (L * k * expTerm) / denominator;
+        }
+
+        // Generate data arrays for Chart.js
+        const weeks = [];
+        const weights = [];
+        const rates = [];
+
+        // Generating samples from week 10 to 22
+        for (let w = 10; w <= 22; w += 0.2) {
+            weeks.push(parseFloat(w.toFixed(1)));
+            weights.push(parseFloat(weightFunction(w).toFixed(1)));
+            rates.push(parseFloat(derivativeFunction(w).toFixed(1)));
+        }
+
+        // Dynamic visual cues based on current week
+        const bioData = {
+            10: {
+                phase: "Establishment / Initial Lag Phase",
+                explanation: "Following flower induction, the crown development dominates. The actual pineapple fruit contains very low mass. Cell division is taking place, setting the physiological yield limits.",
+                advice: "Optimize Nitrogen-Phosphate balance to encourage root extension and leaf count."
+            },
+            13: {
+                phase: "Rapid Linear Expansion Phase",
+                explanation: "The fruit is taking on water and assimilates rapidly. The slope of the derivative is rising steeply, representing accelerated cellular swelling.",
+                advice: "Critical irrigation checkpoint! Water stress now permanently stunts fruit caliber."
+            },
+            15.5: {
+                phase: "Inflection Point (Absolute Peak Growth)",
+                explanation: "The derivative f'(x) reaches its apex value of 208g/week. After this peak, the weight continues to climb, but the *rate* of gain begins its physiological decelerating curve.",
+                advice: "Transition phase: Split Potassium application to drive starch development."
+            },
+            18: {
+                phase: "Deceleration Phase (Starch Staging)",
+                explanation: "The mass is approaching carrying capacity. Organic acids are synthesizing inside the vacuoles. Instant rate of weight gain drops to ~100g/week.",
+                advice: "Monitor environmental browning indicators. Keep pest control active."
+            },
+            21: {
+                phase: "Optimal Agronomic Harvest Window",
+                explanation: "The growth curve has flattened out entirely. Rate of weight gain drops below 15g/week, meaning physical growth has ceased, and sugar transformation is at its peak (Grade A Brix level).",
+                advice: "Harvest ready! High shell golden coloration indices. Safe for processing."
+            }
+        };
+
+        // Determine biological text based on nearest keyed phase
+        function getBioExplanation(w) {
+            let keys = Object.keys(bioData).map(Number);
+            let closestKey = keys.reduce((prev, curr) => Math.abs(curr - w) < Math.abs(prev - w) ? curr : prev);
+            return bioData[closestKey];
+        }
+
+        // Initialize variables for the dynamic state
+        let currentWeek = 15.5;
+        let chartInstance = null;
+        let animationInterval = null;
+
+        // Build Tangent line around the selected coordinate for interactive display
+        function calculateTangentLine(targetW) {
+            const slope = derivativeFunction(targetW);
+            const yOffset = weightFunction(targetW);
+            
+            // Build line points around the selected point: [targetW - 1.5, targetW + 1.5]
+            const tangentPoints = [];
+            for (let i = 0; i < weeks.length; i++) {
+                const w = weeks[i];
+                if (w >= targetW - 2.0 && w <= targetW + 2.0) {
+                    // Linear approximation formula: y - y1 = m(x - x1)
+                    const y = slope * (w - targetW) + yOffset;
+                    tangentPoints.push({ x: w, y: y });
+                }
+            }
+            return tangentPoints;
+        }
+
+        // Update UI Text Panels
+        function updateUIPanels(w) {
+            const weightVal = weightFunction(w).toFixed(1);
+            const rateVal = derivativeFunction(w).toFixed(1);
+            const bioDetails = getBioExplanation(w);
+
+            document.getElementById('currentWeekLabel').innerText = `${w.toFixed(1)} Weeks`;
+            document.getElementById('statAge').innerHTML = `${w.toFixed(1)} <span class="text-xs text-slate-400 font-normal">WAF</span>`;
+            document.getElementById('statWeight').innerHTML = `${weightVal} <span class="text-xs text-slate-400 font-normal">grams</span>`;
+            document.getElementById('statRate').innerHTML = `${rateVal} <span class="text-xs text-slate-400 font-normal">g/wk</span>`;
+            document.getElementById('physioPhase').innerText = `Phase: ${bioDetails.phase}`;
+            document.getElementById('laymanExplanation').innerText = bioDetails.explanation;
+            document.getElementById('agroAdvice').innerText = `Agro-tech Rule: ${bioDetails.advice}`;
+        }
+
+        // Initialize and setup Chart
+        function initChart() {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            // Initial tangent line calculated for x = 15.5
+            const tangentPoints = calculateTangentLine(currentWeek);
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: weeks,
+                    datasets: [
+                        {
+                            label: 'MD2 Fruit Mass f(x) (g)',
+                            data: weights,
+                            borderColor: '#eab308',
+                            backgroundColor: 'rgba(234, 179, 8, 0.05)',
+                            borderWidth: 4,
+                            yAxisID: 'yWeight',
+                            pointRadius: 0,
+                            pointHoverRadius: 4,
+                            tension: 0.15,
+                            fill: true
+                        },
+                        {
+                            label: "Instant Rate of Change f'(x) (g/week)",
+                            data: rates,
+                            borderColor: '#10b981',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            yAxisID: 'yRate',
+                            pointRadius: 0,
+                            pointHoverRadius: 4,
+                            tension: 0.15,
+                        },
+                        {
+                            label: 'Tangent Line (Slope)',
+                            data: tangentPoints,
+                            borderColor: '#ef4444',
+                            borderWidth: 3.5,
+                            yAxisID: 'yWeight',
+                            pointRadius: 0,
+                            tension: 0,
+                            parsing: {
+                                xAxisKey: 'x',
+                                yAxisKey: 'y'
+                            }
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Weeks After Flower Forcing (WAF)',
+                                font: { weight: 'bold', size: 11 }
+                            }
+                        },
+                        yWeight: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            min: 0,
+                            max: 2000,
+                            title: {
+                                display: true,
+                                text: 'Average Weight (grams)',
+                                font: { weight: 'bold', size: 11 }
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.03)'
+                            }
+                        },
+                        yRate: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            min: 0,
+                            max: 250,
+                            title: {
+                                display: true,
+                                text: 'Instantaneous Growth Rate (g/week)',
+                                font: { weight: 'bold', size: 11 }
+                            },
+                            grid: {
+                                drawOnChartArea: false // prevent overlay grids
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 15,
+                                font: { size: 10, family: 'Plus Jakarta Sans' }
+                            }
+                        }
+                    },
+                    // Setup Chart Click Actions
+                    onClick: (e, activeEl) => {
+                        if (activeEl && activeEl.length > 0) {
+                            const index = activeEl[0].index;
+                            const clickedWeek = weeks[index];
+                            
+                            // Cancel automatic playing
+                            clearInterval(animationInterval);
+                            
+                            updateChartForWeek(clickedWeek);
+                            showModalSnapshot(clickedWeek);
+                        }
+                    }
+                }
+            });
+        }
+
+        // Core chart and state update algorithm
+        function updateChartForWeek(w) {
+            currentWeek = w;
+            document.getElementById('weekSlider').value = w;
+            
+            // Recalculate tangent parameters
+            const updatedTangent = calculateTangentLine(w);
+            chartInstance.data.datasets[2].data = updatedTangent;
+            chartInstance.update('none'); // silent updates without losing user view position
+
+            updateUIPanels(w);
+        }
+
+        // Custom snapshot popup generator for canvas interaction
+        function showModalSnapshot(w) {
+            const weightVal = weightFunction(w).toFixed(1);
+            const rateVal = derivativeFunction(w).toFixed(1);
+            const bioDetails = getBioExplanation(w);
+
+            const contentHtml = `
+                <div class="space-y-2 mt-2">
+                    <p>At week <strong>${w.toFixed(1)}</strong>, calculations prove:</p>
+                    <div class="bg-slate-50 p-2.5 rounded-lg text-xs space-y-1">
+                        <div>📏 Mass $f(x)$ = <strong>${weightVal} g</strong></div>
+                        <div>⚡ Instant Growth $f'(x)$ = <strong class="text-emerald-700">${rateVal} g/week</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">${bioDetails.explanation}</p>
+                </div>
+            `;
+            document.getElementById('modalContent').innerHTML = contentHtml;
+            // Render any equations injected dynamically in the modal
+            renderMathInElement(document.getElementById('modalContent'));
+            
+            document.getElementById('modalNotice').classList.remove('hidden');
+        }
+
+        // Slider Interaction
+        document.getElementById('weekSlider').addEventListener('input', (e) => {
+            clearInterval(animationInterval);
+            const val = parseFloat(e.target.value);
+            updateChartForWeek(val);
+        });
+
+        // Animation Loop Control
+        document.getElementById('btnAnimate').addEventListener('click', () => {
+            clearInterval(animationInterval);
+            let playWeek = 10.0;
+            
+            animationInterval = setInterval(() => {
+                if (playWeek > 22.0) {
+                    clearInterval(animationInterval);
+                } else {
+                    updateChartForWeek(playWeek);
+                    playWeek = parseFloat((playWeek + 0.2).toFixed(1));
+                }
+            }, 100);
+        });
+
+        // Reset Setup
+        document.getElementById('btnReset').addEventListener('click', () => {
+            clearInterval(animationInterval);
+            updateChartForWeek(15.5);
+        });
+
+        // Custom Modal Closing
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('modalNotice').classList.add('hidden');
+        });
+
+        // Init on window load
+        window.onload = function() {
+            initChart();
+            updateUIPanels(currentWeek);
+        };
+    </script>
+
+</body></html>
